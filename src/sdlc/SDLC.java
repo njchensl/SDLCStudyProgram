@@ -58,9 +58,14 @@ public class SDLC {
         }
         questions = new Question[n];
         for (int i = 0; i < n; i++) {
-
+            String q = scq.nextLine();
+            String o1 = scq.nextLine();
+            String o2 = scq.nextLine();
+            String o3 = scq.nextLine();
+            String o4 = scq.nextLine();
+            String oc = scq.nextLine();
+            questions[i] = new Question(q, new String[]{o1, o2, o3, o4}, oc);
         }
-        // TODO read questions
 
         // TODO read study notes
         // show the JFrame
