@@ -50,6 +50,11 @@ public class Welcome extends javax.swing.JPanel {
 
         btnQuiz.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnQuiz.setText("Quiz");
+        btnQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuizActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -89,6 +94,11 @@ public class Welcome extends javax.swing.JPanel {
         // display the notes
         SDLC.setMainContentPane(new Notes());
     }//GEN-LAST:event_btnNotesActionPerformed
+
+    private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
+        // display the quiz
+        SDLC.setMainContentPane(new Notes());
+    }//GEN-LAST:event_btnQuizActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
