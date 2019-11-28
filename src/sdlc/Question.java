@@ -52,5 +52,16 @@ public class Question {
     public void setCorrectOption(String s) {
         correctOption = s;
     }
-
+    
+    @Override
+    public String toString() {
+        return "Question: " + question + "\n"
+                + "Options:\n"
+                + options[0] + "\n"
+                + options[1] + "\n"
+                + options[2] + "\n"
+                + options[3] + "\n"
+                + "Correct Option:\n"
+                + correctOption;
+    }
 }
