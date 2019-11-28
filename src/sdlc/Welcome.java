@@ -97,7 +97,7 @@ public class Welcome extends javax.swing.JPanel {
 
     private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
         // display the quiz
-        SDLC.setMainContentPane(new Notes());
+        SDLC.setMainContentPane(new Quiz());
     }//GEN-LAST:event_btnQuizActionPerformed
 
 
