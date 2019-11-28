@@ -5,7 +5,10 @@
  */
 package sdlc;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -13,11 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class Quiz extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Quiz
-     */
-    public Quiz() {
+    private Question questions[];
+    private Question currentQuestion;
+    private int index = 0;
+
+    public Quiz(Question[] questions) {
+        this.questions = questions;
         initComponents();
+        // load the first question
+        loadNext();
     }
 
     /**
@@ -35,6 +42,30 @@ public class Quiz extends javax.swing.JPanel {
         btnD = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblQuestion = new javax.swing.JLabel();
+
+        btnA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOptionActionPerformed(evt);
+            }
+        });
+
+        btnB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOptionActionPerformed(evt);
+            }
+        });
+
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOptionActionPerformed(evt);
+            }
+        });
+
+        btnD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOptionActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +124,55 @@ public class Quiz extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptionActionPerformed
+        // get source button
+        JButton btn = (JButton) evt.getSource();
+        new Thread(() -> {
+            SwingUtilities.invokeLater(() -> {
+                if (currentQuestion.isCorrect(btn.getText())) {
+                    btn.setBackground(Color.GREEN);
+                } else {
+                    btn.setBackground(Color.RED);
+                }
+            });
+            try {
+                btnA.setEnabled(false);
+                btnB.setEnabled(false);
+                btnC.setEnabled(false);
+                btnD.setEnabled(false);
+                // wait 3 seconds
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+            }
+            loadNext();
+        }).start();
+    }//GEN-LAST:event_btnOptionActionPerformed
+
+    private void loadNext() {
+        if (index >= questions.length - 1) {
+            // finished
+            JOptionPane.showMessageDialog(null, "Finished");
+        } else {
+            currentQuestion = questions[index++];
+            loadQuestion(currentQuestion);
+        }
+    }
+
+    private void loadQuestion(Question q) {
+        this.lblQuestion.setText(q.getQuestion());
+        this.btnA.setText(q.getOption(0));
+        this.btnB.setText(q.getOption(1));
+        this.btnC.setText(q.getOption(2));
+        this.btnD.setText(q.getOption(3));
+        btnA.setEnabled(true);
+        btnB.setEnabled(true);
+        btnC.setEnabled(true);
+        btnD.setEnabled(true);
+        btnA.setBackground(Color.WHITE);
+        btnB.setBackground(Color.WHITE);
+        btnC.setBackground(Color.WHITE);
+        btnD.setBackground(Color.WHITE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnA;
