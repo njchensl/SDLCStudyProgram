@@ -1,61 +1,61 @@
 10
-Question1
-A
-B
-C
-D
-A
-Question2
-A
-B
-C
-D
-A
-Question3
-A
-B
-C
-D
-A
-Question4
-A
-B
-C
-D
-A
-Question5
-A
-B
-C
-D
-A
-Question6
-A
-B
-C
-D
-A
-Question7
-A
-B
-C
-D
-A
-Question8
-A
-B
-C
-D
-A
-Question9
-A
-B
-C
-D
-A
-Question10
-A
-B
-C
-D
-A
+What does <b>SDLC</b> stand for?
+Software Development Life Cycle
+Sierra Delta Lima Charlie
+Systemic Destruction of Limited Companies
+Secure Digital Life Corporation
+Software Development Life Cycle
+Which of the following stage is <b>not</b> in the waterfall model?
+Publish
+Design
+Implementation
+Analysis
+Publish
+True or False: Mistakes found early in the SDLC are <b>much less expensive</b> to correct than those found later.
+True
+False
+no idea
+idk
+True
+Which part of the software development process costs the <b>most</b> amount of time and money?
+Maintenance
+Implementation
+Integration
+Design
+Maintenance
+Which of the following is <b>not</b> something that a Gantt Chart is able to do?
+Helps to visualize the how objects communicate with each other
+Helps to visualize the progress of projects
+Helps to visualize the schedule
+Helps to manage large projects
+Helps to visualize the how objects communicate with each other
+What does <b>UML</b> stand for?
+Unified Modeling Language
+Uniform Mike Lima
+United Models and Linguists
+Universal Mopping League
+Unified Modeling Language
+Which of the following is <b>not</b> a way to measure success of a piece of software?
+Does it work on <b>all major platforms</b> (Windows, macOS, etc)?
+Is it <b>scalable</b>?
+Is there a successful <b>support system</b> in place for the client?
+Was it delivered <b>on time</b> and <b>ready to go</b>?
+Does it work on <b>all major platforms</b> (Windows, macOS, etc)?
+True or False: Sometimes, it is required for the developers to <b>backup</b> and <b>redo</b> some of the work in the previous phase.
+True
+False
+no idea
+idk
+True
+True or False: The <b>most efficient</b> way to start a <b>big project</b> is to go to the implementation phase directly because the first two stages of the SDLC take too much time to complete.
+False
+True
+no idea
+idk
+False
+A system involves ...
+The client
+The designers
+The testers
+All of the above
+All of the above

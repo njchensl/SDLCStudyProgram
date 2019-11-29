@@ -6,6 +6,7 @@
 package sdlc;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
@@ -134,7 +135,7 @@ public class Quiz extends javax.swing.JPanel {
         JButton btn = (JButton) evt.getSource();
         new Thread(() -> {
             SwingUtilities.invokeLater(() -> {
-                if (currentQuestion.isCorrect(btn.getText())) {
+                if (currentQuestion.isCorrect(btn.getText().replaceAll("<html>", "").replaceAll("</html>", ""))) {
                     btn.setBackground(Color.GREEN);
                 } else {
                     btn.setBackground(Color.RED);
@@ -145,8 +146,8 @@ public class Quiz extends javax.swing.JPanel {
                 for (int i = 0; i < 4; i++) {
                     btns[i].setEnabled(false);
                 }
-                // wait 3 seconds
-                Thread.sleep(3000);
+                // wait 2 seconds
+                Thread.sleep(2000);
             } catch (InterruptedException ex) {
             }
             loadNext();
@@ -156,14 +157,14 @@ public class Quiz extends javax.swing.JPanel {
     private void showCorrectAnswer(Question q) {
         String a = q.getCorrectOption();
         for (JButton b : btns) {
-            if (a.equals(b.getText())) {
+            if (a.equals(b.getText().replaceAll("<html>", "").replaceAll("</html>", ""))) {
                 b.setBackground(Color.GREEN);
             }
         }
     }
 
     private void loadNext() {
-        if (index >= questions.length - 1) {
+        if (index >= questions.length) {
             // finished
             JOptionPane.showMessageDialog(null, "Finished");
         } else {
@@ -173,7 +174,14 @@ public class Quiz extends javax.swing.JPanel {
     }
 
     private void loadQuestion(Question q) {
-        this.lblQuestion.setText(q.getQuestion());
+        String s = q.getQuestion();
+        
+        if (s.length() < 40) {
+            lblQuestion.setFont(new Font("Tahoma", 0, 24));
+        } else {
+            lblQuestion.setFont(new Font("Tahoma", 0, 18));
+        }
+        this.lblQuestion.setText("<html>" + s + "</html>");
         loadOptionsRandomly(q);
         for (JButton b : btns) {
             b.setEnabled(true);
@@ -190,7 +198,7 @@ public class Quiz extends javax.swing.JPanel {
             order[i] = SDLC.generateNotContaining(order, 4);
         }
         for (int i = 0; i < 4; i++) {
-            btns[i].setText(q.getOption(order[i]));
+            btns[i].setText("<html>" + q.getOption(order[i]) + "</html>");
         }
     }
 
