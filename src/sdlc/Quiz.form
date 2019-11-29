@@ -19,7 +19,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblQuestion" max="32767" attributes="0"/>
+                  <Component id="pb" max="32767" attributes="0"/>
+                  <Component id="lblQuestion" pref="480" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnA" min="-2" pref="235" max="-2" attributes="0"/>
                       <EmptySpace pref="10" max="32767" attributes="0"/>
@@ -45,7 +46,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblQuestion" pref="269" max="32767" attributes="0"/>
+              <Component id="lblQuestion" pref="246" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnB" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
@@ -56,6 +57,8 @@
                   <Component id="btnC" min="-2" pref="84" max="-2" attributes="0"/>
                   <Component id="btnD" min="-2" pref="84" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="pb" min="-2" pref="17" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -98,6 +101,8 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Question"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JProgressBar" name="pb">
     </Component>
   </SubComponents>
 </Form>
