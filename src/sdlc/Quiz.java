@@ -146,8 +146,8 @@ public class Quiz extends javax.swing.JPanel {
                 for (int i = 0; i < 4; i++) {
                     btns[i].setEnabled(false);
                 }
-                // wait 3 seconds
-                Thread.sleep(3000);
+                // wait 2 seconds
+                Thread.sleep(2000);
             } catch (InterruptedException ex) {
             }
             loadNext();
@@ -164,7 +164,7 @@ public class Quiz extends javax.swing.JPanel {
     }
 
     private void loadNext() {
-        if (index >= questions.length - 1) {
+        if (index >= questions.length) {
             // finished
             JOptionPane.showMessageDialog(null, "Finished");
         } else {
