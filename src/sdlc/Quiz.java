@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
  */
 public class Quiz extends javax.swing.JPanel {
     private final JButton btns[];
-    private Question questions[];
+    private final Question questions[];
     private Question currentQuestion;
     private int index = 0;
 
