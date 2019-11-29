@@ -104,7 +104,7 @@ public class SDLC {
         return q;
     }
 
-    private static int generateNotContaining(int arr[], int max) {
+    public static int generateNotContaining(int arr[], int max) {
         int n = 0;
         do {
             n = (int) (Math.random() * (max));
