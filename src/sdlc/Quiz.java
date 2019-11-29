@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
  * @author frche1699
  */
 public class Quiz extends javax.swing.JPanel {
-
+    private final JButton btns[];
     private Question questions[];
     private Question currentQuestion;
     private int index = 0;
@@ -23,6 +23,11 @@ public class Quiz extends javax.swing.JPanel {
     public Quiz(Question[] questions) {
         this.questions = questions;
         initComponents();
+        btns = new JButton[4];
+        btns[0] = btnA;
+        btns[1] = btnB;
+        btns[2] = btnC;
+        btns[3] = btnD;
         // load the first question
         loadNext();
     }
@@ -134,12 +139,12 @@ public class Quiz extends javax.swing.JPanel {
                 } else {
                     btn.setBackground(Color.RED);
                 }
+                showCorrectAnswer(currentQuestion);
             });
             try {
-                btnA.setEnabled(false);
-                btnB.setEnabled(false);
-                btnC.setEnabled(false);
-                btnD.setEnabled(false);
+                for (int i = 0; i < 4; i++) {
+                    btns[i].setEnabled(false);
+                }
                 // wait 3 seconds
                 Thread.sleep(3000);
             } catch (InterruptedException ex) {
@@ -147,6 +152,15 @@ public class Quiz extends javax.swing.JPanel {
             loadNext();
         }).start();
     }//GEN-LAST:event_btnOptionActionPerformed
+
+    private void showCorrectAnswer(Question q) {
+        String a = q.getCorrectOption();
+        for (JButton b : btns) {
+            if (a.equals(b.getText())) {
+                b.setBackground(Color.GREEN);
+            }
+        }
+    }
 
     private void loadNext() {
         if (index >= questions.length - 1) {
@@ -160,18 +174,24 @@ public class Quiz extends javax.swing.JPanel {
 
     private void loadQuestion(Question q) {
         this.lblQuestion.setText(q.getQuestion());
-        this.btnA.setText(q.getOption(0));
-        this.btnB.setText(q.getOption(1));
-        this.btnC.setText(q.getOption(2));
-        this.btnD.setText(q.getOption(3));
-        btnA.setEnabled(true);
-        btnB.setEnabled(true);
-        btnC.setEnabled(true);
-        btnD.setEnabled(true);
-        btnA.setBackground(Color.WHITE);
-        btnB.setBackground(Color.WHITE);
-        btnC.setBackground(Color.WHITE);
-        btnD.setBackground(Color.WHITE);
+        loadOptionsRandomly(q);
+        for (JButton b : btns) {
+            b.setEnabled(true);
+            b.setBackground(Color.WHITE);
+        }
+    }
+    
+    private void loadOptionsRandomly(Question q) {
+        int order[] = new int[4];
+        for (int i = 0; i < 4; i++) {
+            order[i] = -1;
+        }
+        for (int i = 0; i < 4; i++) {
+            order[i] = SDLC.generateNotContaining(order, 4);
+        }
+        for (int i = 0; i < 4; i++) {
+            btns[i].setText(q.getOption(order[i]));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
