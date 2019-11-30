@@ -1,6 +1,6 @@
-# Project Management with SDLC Study Program User Manual
+# Project Management with SDLC Study Program
+# User Manual
 
-# Contents
 
 1. [Installation](#installation)
 
