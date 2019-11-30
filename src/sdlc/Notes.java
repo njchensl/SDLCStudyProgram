@@ -5,17 +5,25 @@
  */
 package sdlc;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
+
 /**
  *
  * @author frche1699
  */
 public class Notes extends javax.swing.JPanel {
 
+    private String[] topics, texts;
+    
     /**
      * Creates new form Notes
      */
-    public Notes() {
+    public Notes(String[] topics, String[] texts) {
         initComponents();
+        this.topics = topics;
+        this.texts = texts;
     }
 
     /**
@@ -27,19 +35,71 @@ public class Notes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cateLbl = new javax.swing.JLabel();
+        notesType = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        notesDisplay = new javax.swing.JTextPane();
+        notesDisplay.setContentType("text/html");
+        notesLbl = new javax.swing.JLabel();
+
+        cateLbl.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        cateLbl.setText("Please select category:");
+
+        notesType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        notesType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notesTypeActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(notesDisplay);
+
+        notesLbl.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        notesLbl.setText("Notes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(notesLbl)
+                    .addComponent(cateLbl)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notesType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(notesLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cateLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(notesType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void notesTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesTypeActionPerformed
+        int selection = notesType.getSelectedIndex();
+        
+        switch (selection) {
+            case 0:
+                // TODO
+        }
+    }//GEN-LAST:event_notesTypeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cateLbl;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane notesDisplay;
+    private javax.swing.JLabel notesLbl;
+    private javax.swing.JComboBox<String> notesType;
     // End of variables declaration//GEN-END:variables
 }
