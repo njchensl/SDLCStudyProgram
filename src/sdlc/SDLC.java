@@ -6,6 +6,8 @@
 package sdlc;
 
 import java.awt.Dimension;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -27,7 +29,7 @@ public class SDLC {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {  
+    public static void main(String[] args) {
         // set windows / mac os look and feel
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -71,11 +73,47 @@ public class SDLC {
         // show the JFrame
         f = new JFrame("SDLC") {
             {
-                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 this.setContentPane(new Welcome());
                 this.setPreferredSize(new Dimension(500, 500));
                 this.setResizable(false);
                 this.pack();
+                this.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        // window closing confirmation
+                        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                        if (choice == JOptionPane.YES_OPTION) {
+                            System.exit(0);
+                        }
+                    }
+
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowIconified(WindowEvent e) {
+                        // prevents the user from minimizing the window
+                        ((JFrame) e.getWindow()).setState(JFrame.NORMAL);
+                    }
+
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {
+                    }
+                });
             }
         };
         SwingUtilities.invokeLater(() -> {
