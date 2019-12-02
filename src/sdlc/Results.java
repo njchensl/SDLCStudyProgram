@@ -81,6 +81,7 @@ public class Results extends javax.swing.JPanel {
         SDLC.setMainContentPane(new Welcome());
     }//GEN-LAST:event_btnBackActionPerformed
 
+    // prevents the textbox from being edited
     private void txtResultsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtResultsFocusGained
         txtResults.setEditable(false);
     }//GEN-LAST:event_txtResultsFocusGained

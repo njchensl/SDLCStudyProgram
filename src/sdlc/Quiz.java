@@ -30,6 +30,7 @@ public class Quiz extends javax.swing.JPanel {
         initComponents();
         results = "<h1>Results:</h1>";
         btns = new JButton[4];
+        // put the buttons into an array so that they could be iterated through easily
         btns[0] = btnA;
         btns[1] = btnB;
         btns[2] = btnC;
@@ -136,15 +137,18 @@ public class Quiz extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back? You progress will not be saved.", "Warning", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             SDLC.setMainContentPane(new Welcome());
+            // go back
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptionActionPerformed
         // get source button
         JButton btn = (JButton) evt.getSource();
+        // add the current question to the results;
         this.results += "<p></p><p>Question: " + currentQuestion.getQuestion() + "</p>";
         new Thread(() -> {
-            String userSelection = btn.getText().replaceAll("<html>", "").replaceAll("</html>", "");
+            String userSelection = btn.getText().replaceAll("<html>", "").replaceAll("</html>", ""); // delete all uneccessary html tages
+            // display the answer feedback
             SwingUtilities.invokeLater(() -> {
                 if (currentQuestion.isCorrect(userSelection)) {
                     btn.setBackground(Color.GREEN);
@@ -155,8 +159,10 @@ public class Quiz extends javax.swing.JPanel {
                 }
                 showCorrectAnswer(currentQuestion);
             });
+            // add the options to the results
             addResults(userSelection);
             try {
+                // disable the buttons
                 for (int i = 0; i < 4; i++) {
                     btns[i].setEnabled(false);
                 }
@@ -164,6 +170,7 @@ public class Quiz extends javax.swing.JPanel {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
             }
+            // load the next question
             loadNext();
         }).start();
     }//GEN-LAST:event_btnOptionActionPerformed
