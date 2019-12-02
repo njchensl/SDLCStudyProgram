@@ -8,6 +8,7 @@
     * [Startup](#startup)
     * [Study Notes](#study-notes)
     * [Quiz](#quiz)
+    * [Termination](#termination)
 
 
 
@@ -55,3 +56,7 @@ If you answer is correct, you answer will be marked green, and it will look like
 ![img](https://i.ibb.co/5GzHKMZ/Capture2.png)
 
 To go back to the welcome page, click the BACK button on the top.
+
+
+## Termination
+To terminate the program, press the close button on the window to terminate the program. You will be asked to confirm your action.
