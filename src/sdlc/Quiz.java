@@ -24,10 +24,12 @@ public class Quiz extends javax.swing.JPanel {
     private Question currentQuestion;
     private int index = 0;
     private String results;
+    private final int wait;
 
     public Quiz(Question[] questions) {
         this.questions = questions;
         initComponents();
+        wait = SDLC.isMac() ? 200 : 2000;
         results = "<h1>Results:</h1>";
         btns = new JButton[4];
         // put the buttons into an array so that they could be iterated through easily
@@ -153,10 +155,8 @@ public class Quiz extends javax.swing.JPanel {
             SwingUtilities.invokeLater(() -> {
                 if (currentQuestion.isCorrect(userSelection)) {
                     btn.setBackground(Color.GREEN);
-                    btn.setForeground(Color.GREEN);
                 } else {
                     btn.setBackground(Color.RED);
-                    btn.setForeground(Color.RED);
                 }
                 showCorrectAnswer(currentQuestion);
             });
@@ -168,7 +168,7 @@ public class Quiz extends javax.swing.JPanel {
                     btns[i].setEnabled(false);
                 }
                 // wait 2 seconds
-                Thread.sleep(2000);
+                Thread.sleep(wait);
             } catch (InterruptedException ex) {
             }
             // load the next question
@@ -181,7 +181,6 @@ public class Quiz extends javax.swing.JPanel {
         for (JButton b : btns) {
             if (a.equals(b.getText().replaceAll("<html>", "").replaceAll("</html>", ""))) {
                 b.setBackground(Color.GREEN);
-                b.setForeground(Color.GREEN);
             }
         }
     }
