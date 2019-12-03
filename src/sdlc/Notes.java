@@ -8,6 +8,9 @@ package sdlc;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
+import java.util.Arrays;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 /**
  *
@@ -16,14 +19,42 @@ import java.io.*;
 public class Notes extends javax.swing.JPanel {
 
     private String[] topics, texts;
-    
+
     /**
      * Creates new form Notes
      */
     public Notes(String[] topics, String[] texts) {
         initComponents();
+        txtNotes.setContentType("text/html");
+        //txtNotes.setEditable(false);
+        
         this.topics = topics;
         this.texts = texts;
+        //Arrays.stream(texts).forEach(System.out::println);
+        System.out.println(texts[1]);
+        generateAndDisplay();
+    }
+
+    private void generateAndDisplay() {
+
+        String s = "<html>";
+
+        // table of contents
+        s += "<h1>Table of Contents</h1><ul style=\"list-style-type:square;\">";
+        for (int i = 0; i < topics.length; i++) {
+            s += "<li>" + "<a href=\"#" + "anchor" + i + "\"><h3>" + topics[i] + "</h3></a>" + "</li>";
+        }
+        s += "</ul><p></p>";
+        // content
+        for (int i = 0; i < texts.length; i++) {
+            s += "<h2 id=\"" + "anchor" + i + "\">" + topics[i] + "</h2>";
+            s += "<p>" + texts[i] + "</p>";
+            s += "<p></p><p></p>";
+        }
+
+        s += "</html>";
+        System.out.println(s);
+        txtNotes.setText(s);
     }
 
     /**
@@ -35,27 +66,30 @@ public class Notes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cateLbl = new javax.swing.JLabel();
-        notesType = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        notesDisplay = new javax.swing.JTextPane();
-        notesDisplay.setContentType("text/html");
         notesLbl = new javax.swing.JLabel();
-
-        cateLbl.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        cateLbl.setText("Please select category:");
-
-        notesType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        notesType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notesTypeActionPerformed(evt);
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JEditorPane();
+        txtNotes.setEditable(false);
+        txtNotes.addHyperlinkListener(new HyperlinkListener() {
+            @Override
+            public void hyperlinkUpdate(final HyperlinkEvent pE) {
+                if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {
+                    System.out.println("JEditorPane link click: url='" + pE.getURL() + "' description='" + pE.getDescription() + "'");
+                    String reference = pE.getDescription();
+                    if (reference != null && reference.startsWith("#")) { // link must start with # to be internal reference
+                        reference = reference.substring(1);
+                        txtNotes.scrollToReference(reference);
+                        //txtNotes.scrollToReference("#" + reference);
+                        System.out.println("scrolled");
+                    }
+                }
             }
         });
 
-        jScrollPane1.setViewportView(notesDisplay);
-
         notesLbl.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         notesLbl.setText("Notes");
+
+        jScrollPane2.setViewportView(txtNotes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -64,42 +98,25 @@ public class Notes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(notesLbl)
-                    .addComponent(cateLbl)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notesType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notesLbl))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(notesLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cateLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(notesType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void notesTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notesTypeActionPerformed
-        int selection = notesType.getSelectedIndex();
-        
-        switch (selection) {
-            case 0:
-                // TODO
-        }
-    }//GEN-LAST:event_notesTypeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cateLbl;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane notesDisplay;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel notesLbl;
-    private javax.swing.JComboBox<String> notesType;
+    private javax.swing.JEditorPane txtNotes;
     // End of variables declaration//GEN-END:variables
 }

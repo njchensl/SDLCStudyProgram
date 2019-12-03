@@ -19,12 +19,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane2" min="-2" pref="448" max="-2" attributes="0"/>
                   <Component id="notesLbl" min="-2" max="-2" attributes="0"/>
-                  <Component id="cateLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
-                  <Component id="notesType" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -33,58 +31,14 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="24" max="32767" attributes="0"/>
               <Component id="notesLbl" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="cateLbl" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="notesType" min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="441" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="359" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="cateLbl">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="14" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Please select category:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="notesType">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notesTypeActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextPane" name="notesDisplay">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="notesDisplay.setContentType(&quot;text/html&quot;);&#xa;"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="notesLbl">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -93,5 +47,19 @@
         <Property name="text" type="java.lang.String" value="Notes"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JEditorPane" name="txtNotes">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtNotes.setEditable(false);&#xa;txtNotes.addHyperlinkListener(new HyperlinkListener() {&#xa;            @Override&#xa;public void hyperlinkUpdate(final HyperlinkEvent pE) {&#xa;                if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {&#xa;                    System.out.println(&quot;JEditorPane link click: url=&apos;&quot; + pE.getURL() + &quot;&apos; description=&apos;&quot; + pE.getDescription() + &quot;&apos;&quot;);&#xa;                    String reference = pE.getDescription();&#xa;                    if (reference != null &amp;&amp; reference.startsWith(&quot;#&quot;)) { // link must start with # to be internal reference&#xa;                        reference = reference.substring(1);&#xa;                        txtNotes.scrollToReference(reference);&#xa;                        //txtNotes.scrollToReference(&quot;#&quot; + reference);&#xa;                        System.out.println(&quot;scrolled&quot;);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });&#xa;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

@@ -75,19 +75,59 @@ public class SDLC {
         try {
             File f = new File("notes");
             Scanner s = new Scanner(f);
+            
+            s.nextLine();
+          
+            topics.add(s.nextLine());
+            
             String txt = "";
             while (s.hasNextLine()) {
                 String ss = s.nextLine();
+                
                 if (ss.equals("---")) {
                     topics.add(s.nextLine());
                     texts.add(txt);
                     txt = "";
                 } else {
-                    txt += ss + "\n";
-                    //System.out.println(ss);
+                    txt += ss;
                 }
             }
             texts.add(txt);
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            /*
+            
+            String txt = "";
+            s.nextLine();
+            topics.add(s.nextLine());
+            
+            
+            while (s.hasNextLine()) {
+                String ss = s.nextLine();
+                if (ss.equals("---")) {
+                    topics.add(s.nextLine());
+                    texts.add(txt);
+                    //System.out.println(txt);
+                    txt = "";
+                } else {
+                    txt += ss;
+                    //System.out.println(ss);
+                }
+            }
+            */
+            
+            //topics.forEach(System.out::println);
+            //texts.forEach(System.out::println);
+            
+            //System.out.println(txt);
             
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Study notes not found", "Error", JOptionPane.ERROR_MESSAGE);
