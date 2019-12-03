@@ -35,6 +35,7 @@ To take the [quiz](#quiz), click on the Quiz button.
 
 ## Study Notes
 An HTML document will be displayed in the textarea. To go to any catagory, click on the link in the table of contents.
+![img](https://i.ibb.co/1GHDnzC/Capture.png)
 
 ## Quiz
 When you select quiz, you will see a page similar to this:
