@@ -108,7 +108,7 @@ public class SDLC {
                 this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 this.setContentPane(new Welcome());
                 this.setPreferredSize(new Dimension(510, 500));
-                this.setMinimumSize(new Dimension(500, 500));
+                this.setMinimumSize(new Dimension(510, 500));
                 this.setResizable(false);
                 this.pack();
                 this.addWindowListener(new WindowListener() {

@@ -93,6 +93,7 @@ public class Welcome extends javax.swing.JPanel {
     private void btnNotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotesActionPerformed
         // display the notes
         SDLC.setMainContentPane(new Notes(SDLC.getTopics(), SDLC.getTexts()));
+        SDLC.setResizable(true);
     }//GEN-LAST:event_btnNotesActionPerformed
 
     private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed

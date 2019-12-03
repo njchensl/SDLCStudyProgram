@@ -35,14 +35,14 @@ public class Notes extends javax.swing.JPanel {
         String s = "<html>";
 
         // table of contents
-        s += "<h1>Table of Contents</h1><ul style=\"list-style-type:square;\">";
+        s += "<h1>Project Management Notes</h1><h2>Table of Contents</h2><ul style=\"list-style-type:square;\">";
         for (int i = 0; i < topics.length; i++) {
-            s += "<li>" + "<a href='#" + "anchor" + i + "'><h3>" + topics[i] + "</h3></a>" + "</li>";
+            s += "<li>" + "<a href='#" + "anchor" + i + "'><h4>" + topics[i] + "</h4></a>" + "</li>";
         }
         s += "</ul><p></p>";
         // content
         for (int i = 0; i < texts.length; i++) {
-            s += "<h2><a name='" + "anchor" + i + "'>" + topics[i] + "</a></h2>";
+            s += "<h3><a name='" + "anchor" + i + "'>" + topics[i] + "</a></h3>";
             s += "<p>" + texts[i] + "</p>";
             s += "<p></p><p></p>";
         }
@@ -61,7 +61,6 @@ public class Notes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        notesLbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JEditorPane();
         txtNotes.setEditable(false);
@@ -80,11 +79,16 @@ public class Notes extends javax.swing.JPanel {
                 }
             }
         });
-
-        notesLbl.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        notesLbl.setText("Notes");
+        btnBack = new javax.swing.JButton();
 
         jScrollPane2.setViewportView(txtNotes);
+
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,26 +98,29 @@ public class Notes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(notesLbl)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(notesLbl)
+                .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        SDLC.setMainContentPane(new Welcome());
+        SDLC.setResizable(false);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel notesLbl;
     private javax.swing.JEditorPane txtNotes;
     // End of variables declaration//GEN-END:variables
 }
