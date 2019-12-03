@@ -5,17 +5,56 @@
  */
 package sdlc;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
+import java.util.Arrays;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
+
 /**
  *
  * @author frche1699
  */
 public class Notes extends javax.swing.JPanel {
 
+    private String[] topics, texts;
+
     /**
      * Creates new form Notes
      */
-    public Notes() {
+    public Notes(String[] topics, String[] texts) {
         initComponents();
+        txtNotes.setContentType("text/html");
+        //txtNotes.setEditable(false);
+        
+        this.topics = topics;
+        this.texts = texts;
+        //Arrays.stream(texts).forEach(System.out::println);
+        System.out.println(texts[1]);
+        generateAndDisplay();
+    }
+
+    private void generateAndDisplay() {
+
+        String s = "<html>";
+
+        // table of contents
+        s += "<h1>Table of Contents</h1><ul style=\"list-style-type:square;\">";
+        for (int i = 0; i < topics.length; i++) {
+            s += "<li>" + "<a href=\"#" + "anchor" + i + "\"><h3>" + topics[i] + "</h3></a>" + "</li>";
+        }
+        s += "</ul><p></p>";
+        // content
+        for (int i = 0; i < texts.length; i++) {
+            s += "<h2 id=\"" + "anchor" + i + "\">" + topics[i] + "</h2>";
+            s += "<p>" + texts[i] + "</p>";
+            s += "<p></p><p></p>";
+        }
+
+        s += "</html>";
+        System.out.println(s);
+        txtNotes.setText(s);
     }
 
     /**
@@ -27,19 +66,57 @@ public class Notes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        notesLbl = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JEditorPane();
+        txtNotes.setEditable(false);
+        txtNotes.addHyperlinkListener(new HyperlinkListener() {
+            @Override
+            public void hyperlinkUpdate(final HyperlinkEvent pE) {
+                if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {
+                    System.out.println("JEditorPane link click: url='" + pE.getURL() + "' description='" + pE.getDescription() + "'");
+                    String reference = pE.getDescription();
+                    if (reference != null && reference.startsWith("#")) { // link must start with # to be internal reference
+                        reference = reference.substring(1);
+                        txtNotes.scrollToReference(reference);
+                        //txtNotes.scrollToReference("#" + reference);
+                        System.out.println("scrolled");
+                    }
+                }
+            }
+        });
+
+        notesLbl.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        notesLbl.setText("Notes");
+
+        jScrollPane2.setViewportView(txtNotes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(notesLbl))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(notesLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel notesLbl;
+    private javax.swing.JEditorPane txtNotes;
     // End of variables declaration//GEN-END:variables
 }

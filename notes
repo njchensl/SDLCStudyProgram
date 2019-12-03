@@ -1,0 +1,35 @@
+---
+What is a successful system?
+<p>Definition of a system: A combination of software and hardware that provides a solution for a business problem</p>
+<p>Involves:</p> 
+<ul><li>The client (the request and $)</li>
+<li>Analysts</li>
+<li>Designers & developers</li>
+<li>Testers</li>
+<li>Users</li>
+<li>Others (e.g. lawyers, communications officers, specialists etc)</li>
+</ul>
+<p>A success system may be measured by answering the following questions:</p>
+<ul><li>Does the project solve what it was meant to solve?</li>
+<li>Is it easy to maintain and administer?</li>
+<li>Is it scalable to meet the needs of the client?</li>
+<li>Is there a successful support system in place for the client?</li>
+<li>Was it delivered on time and ready to go?</li>
+<li>Was the client happy with the finished product?</li></ul>
+---
+The Software Development Process and Waterfall Model
+<p>Creating high-quality software involves organization, planning and utilizing various diagrammatic conventions</p>
+<p>Computer scientists have created a view of the software development process known as the ‘software development life cycle’ (SDLC)</p> 
+<p>One method is known as the <b>‘Waterfall Model’</b></p>
+<ul>
+<li>Developed by Dr Winston Royce in 1970 based on his experience developing software for spacecraft mission planning</li>
+<li>The Waterfall Model consists of several phases: </li>
+</ul>
+<ul style="list-style-type:circle;">
+<li>Problem Statement
+<li>Analysis</li>
+<li>Design </li>
+<li>Implementation </li>
+<li>Integration /Test</li>
+<li>Maintenance </li>
+</ul>

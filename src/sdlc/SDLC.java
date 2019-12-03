@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class SDLC {
 
     private static JFrame f;
     private static Question questions[];
+    private static String[] topics, texts;
 
     /**
      * @param args the command line arguments
@@ -69,7 +71,37 @@ public class SDLC {
             questions[i] = new Question(q, new String[]{o1, o2, o3, o4}, oc);
         }
 
-        // TODO read study notes
+        // read study notes
+        ArrayList<String> topics = new ArrayList();
+        ArrayList<String> texts = new ArrayList();
+        try {
+            File f = new File("notes");
+            Scanner s = new Scanner(f);
+            
+            s.nextLine();
+          
+            topics.add(s.nextLine());
+            
+            String txt = "";
+            while (s.hasNextLine()) {
+                String ss = s.nextLine();
+                
+                if (ss.equals("---")) {
+                    topics.add(s.nextLine());
+                    texts.add(txt);
+                    txt = "";
+                } else {
+                    txt += ss;
+                }
+            }
+            texts.add(txt);
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Study notes not found", "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(3);
+        }
+        SDLC.setTopics(topics.toArray(new String[0]));
+        SDLC.setTexts(texts.toArray(new String[0]));
+
         // show the JFrame
         f = new JFrame("SDLC") {
             {
@@ -158,6 +190,34 @@ public class SDLC {
             }
         }
         return false;
+    }
+
+    /**
+     * @return the topics
+     */
+    public static String[] getTopics() {
+        return topics;
+    }
+
+    /**
+     * @param aTopics the topics to set
+     */
+    private static void setTopics(String[] aTopics) {
+        topics = aTopics;
+    }
+
+    /**
+     * @return the texts
+     */
+    public static String[] getTexts() {
+        return texts;
+    }
+
+    /**
+     * @param aTexts the texts to set
+     */
+    private static void setTexts(String[] aTexts) {
+        texts = aTexts;
     }
     
     public static void setResizable(boolean b) {
