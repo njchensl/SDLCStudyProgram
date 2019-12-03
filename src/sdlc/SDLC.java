@@ -27,6 +27,7 @@ public class SDLC {
     private static JFrame f;
     private static Question questions[];
     private static String[] topics, texts;
+    private static boolean mac;
 
     /**
      * @param args the command line arguments
@@ -42,6 +43,9 @@ public class SDLC {
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
         }
+        
+        String system = System.getProperty("os.name").toLowerCase();
+        mac = system.contains("mac");
 
         // read datafile
         File qf = new File("questions");
@@ -222,5 +226,19 @@ public class SDLC {
     
     public static void setResizable(boolean b) {
         f.setResizable(b);
+    }
+
+    /**
+     * @return the mac
+     */
+    public static boolean isMac() {
+        return mac;
+    }
+
+    /**
+     * @param aMac the mac to set
+     */
+    public static void setMac(boolean aMac) {
+        mac = aMac;
     }
 }
