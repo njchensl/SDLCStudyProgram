@@ -33,3 +33,31 @@ The Software Development Process and Waterfall Model
 <li>Integration /Test</li>
 <li>Maintenance </li>
 </ul>
+---
+The Software Development Process
+<p>Mistakes found early in the SDLC are much less expensive to correct than those found later</p>
+<p>The cost of developing software is not spread equally over the phases</p>
+<ul>
+<li>Integration: 8%</li>
+<li>Implementation: 8%</li>
+<li>Design: 8%</li>
+<li>Analysis: 8%</li>
+<li>Maintenance: 68%</li>
+</ul>
+---
+Project Management Tool
+<ul>
+<li>Gantt Chart</li>
+<p>Developed by mechanical engineer Henry Gantt in the 1910’s
+</p>
+<p>Tool typically used by people working on a large project</p>
+<p>Helps project managers to visualize, schedule, and track scheduled as well as actual progress of projects
+</p>
+<li>UML</li>
+<p>Unified Modeling Language</p>
+<p>Visually specifies parts of a system</p>
+<p>Complex software designs are much more easily described through UML than textually</p>
+<p>UML can be complicated to learn, you are not required to use it for your projects</p>
+<li>Daily Log </li>
+<li>Weekly Report </li>
+</ul>
