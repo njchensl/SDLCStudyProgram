@@ -5,10 +5,6 @@
  */
 package sdlc;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.*;
-import java.util.Arrays;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
@@ -27,7 +23,7 @@ public class Notes extends javax.swing.JPanel {
         initComponents();
         txtNotes.setContentType("text/html");
         //txtNotes.setEditable(false);
-        
+
         this.topics = topics;
         this.texts = texts;
         //Arrays.stream(texts).forEach(System.out::println);
@@ -42,12 +38,12 @@ public class Notes extends javax.swing.JPanel {
         // table of contents
         s += "<h1>Table of Contents</h1><ul style=\"list-style-type:square;\">";
         for (int i = 0; i < topics.length; i++) {
-            s += "<li>" + "<a href=\"#" + "anchor" + i + "\"><h3>" + topics[i] + "</h3></a>" + "</li>";
+            s += "<li>" + "<a href='#" + "anchor" + i + "'><h3>" + topics[i] + "</h3></a>" + "</li>";
         }
         s += "</ul><p></p>";
         // content
         for (int i = 0; i < texts.length; i++) {
-            s += "<h2 id=\"" + "anchor" + i + "\">" + topics[i] + "</h2>";
+            s += "<h2><a name='" + "anchor" + i + "'>" + topics[i] + "</a></h2>";
             s += "<p>" + texts[i] + "</p>";
             s += "<p></p><p></p>";
         }
