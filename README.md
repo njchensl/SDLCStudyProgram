@@ -45,6 +45,8 @@ To go back to the welcome page, click on the "BACK" button on the top left. Your
 
 To select an answer, click on the answer. If it is correct, it will be marked green. Otherwise, it will be marked red, and the correct answer will be marked green. 2 seconds will be given to you to review your question before moving on to the next one.
 
+This feature is currently not available if you are using macOS.
+
 The progress is shown at the bottom of the page.
 
 When you are done, the program will take you to a results page, where you will see all of the questions as well as their answers. It will look somehow like this:
