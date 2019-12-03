@@ -6,6 +6,8 @@
 package sdlc;
 
 import java.awt.Dimension;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -93,42 +95,6 @@ public class SDLC {
                 }
             }
             texts.add(txt);
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            /*
-            
-            String txt = "";
-            s.nextLine();
-            topics.add(s.nextLine());
-            
-            
-            while (s.hasNextLine()) {
-                String ss = s.nextLine();
-                if (ss.equals("---")) {
-                    topics.add(s.nextLine());
-                    texts.add(txt);
-                    //System.out.println(txt);
-                    txt = "";
-                } else {
-                    txt += ss;
-                    //System.out.println(ss);
-                }
-            }
-            */
-            
-            //topics.forEach(System.out::println);
-            //texts.forEach(System.out::println);
-            
-            //System.out.println(txt);
-            
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Study notes not found", "Error", JOptionPane.ERROR_MESSAGE);
             System.exit(3);
@@ -139,11 +105,48 @@ public class SDLC {
         // show the JFrame
         f = new JFrame("SDLC") {
             {
-                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 this.setContentPane(new Welcome());
-                this.setPreferredSize(new Dimension(500, 500));
+                this.setPreferredSize(new Dimension(510, 500));
+                this.setMinimumSize(new Dimension(500, 500));
                 this.setResizable(false);
                 this.pack();
+                this.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        // window closing confirmation
+                        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                        if (choice == JOptionPane.YES_OPTION) {
+                            System.exit(0);
+                        }
+                    }
+
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowIconified(WindowEvent e) {
+                        // prevents the user from minimizing the window
+                        ((JFrame) e.getWindow()).setState(JFrame.NORMAL);
+                    }
+
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowActivated(WindowEvent e) {
+                    }
+
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {
+                    }
+                });
             }
         };
         SwingUtilities.invokeLater(() -> {
@@ -215,5 +218,9 @@ public class SDLC {
      */
     private static void setTexts(String[] aTexts) {
         texts = aTexts;
+    }
+    
+    public static void setResizable(boolean b) {
+        f.setResizable(b);
     }
 }

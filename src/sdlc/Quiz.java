@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Frank Chen
+ * Quiz JPanel
+ * 30NOV19
+ * Displays questions for the user to answer
+ * Prompts the user if their answer is correct or incorrect
  */
 package sdlc;
 
@@ -16,15 +18,19 @@ import javax.swing.SwingUtilities;
  * @author frche1699
  */
 public class Quiz extends javax.swing.JPanel {
+
     private final JButton btns[];
     private final Question questions[];
     private Question currentQuestion;
     private int index = 0;
+    private String results;
 
     public Quiz(Question[] questions) {
         this.questions = questions;
         initComponents();
+        results = "<h1>Results:</h1>";
         btns = new JButton[4];
+        // put the buttons into an array so that they could be iterated through easily
         btns[0] = btnA;
         btns[1] = btnB;
         btns[2] = btnC;
@@ -131,22 +137,33 @@ public class Quiz extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back? You progress will not be saved.", "Warning", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             SDLC.setMainContentPane(new Welcome());
+            SDLC.setResizable(false);
+            // go back
         }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptionActionPerformed
         // get source button
         JButton btn = (JButton) evt.getSource();
+        // add the current question to the results;
+        this.results += "<p></p><p>Question: " + currentQuestion.getQuestion() + "</p>";
         new Thread(() -> {
+            String userSelection = btn.getText().replaceAll("<html>", "").replaceAll("</html>", ""); // delete all uneccessary html tages
+            // display the answer feedback
             SwingUtilities.invokeLater(() -> {
-                if (currentQuestion.isCorrect(btn.getText().replaceAll("<html>", "").replaceAll("</html>", ""))) {
+                if (currentQuestion.isCorrect(userSelection)) {
                     btn.setBackground(Color.GREEN);
+                    btn.setForeground(Color.GREEN);
                 } else {
                     btn.setBackground(Color.RED);
+                    btn.setForeground(Color.RED);
                 }
                 showCorrectAnswer(currentQuestion);
             });
+            // add the options to the results
+            addResults(userSelection);
             try {
+                // disable the buttons
                 for (int i = 0; i < 4; i++) {
                     btns[i].setEnabled(false);
                 }
@@ -154,6 +171,7 @@ public class Quiz extends javax.swing.JPanel {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
             }
+            // load the next question
             loadNext();
         }).start();
     }//GEN-LAST:event_btnOptionActionPerformed
@@ -163,7 +181,25 @@ public class Quiz extends javax.swing.JPanel {
         for (JButton b : btns) {
             if (a.equals(b.getText().replaceAll("<html>", "").replaceAll("</html>", ""))) {
                 b.setBackground(Color.GREEN);
+                b.setForeground(Color.GREEN);
             }
+        }
+    }
+
+    private void addResults(String userSelection) {
+        String font;
+        for (int i = 0; i < 4; i++) {
+            String option = currentQuestion.getOption(i);
+            font = "black";
+            if (option.equals(userSelection)) {
+                if (!currentQuestion.isCorrect(userSelection)) {
+                    font = "red";
+                }
+            }
+            if (currentQuestion.isCorrect(option)) {
+                font = "green";
+            }
+            this.results += "<p><font color=\"" + font + "\">" + option + "</font></p>";
         }
     }
 
@@ -172,6 +208,7 @@ public class Quiz extends javax.swing.JPanel {
         if (index >= questions.length) {
             // finished
             JOptionPane.showMessageDialog(null, "Finished");
+            SDLC.setMainContentPane(new Results(results + "<p></p><p></p><p></p><p></p>"));
         } else {
             currentQuestion = questions[index++];
             loadQuestion(currentQuestion);
@@ -180,7 +217,7 @@ public class Quiz extends javax.swing.JPanel {
 
     private void loadQuestion(Question q) {
         String s = q.getQuestion();
-        
+
         if (s.length() < 40) {
             lblQuestion.setFont(new Font("Tahoma", 0, 24));
         } else {
@@ -191,9 +228,10 @@ public class Quiz extends javax.swing.JPanel {
         for (JButton b : btns) {
             b.setEnabled(true);
             b.setBackground(Color.WHITE);
+            b.setForeground(Color.BLACK);
         }
     }
-    
+
     private void loadOptionsRandomly(Question q) {
         int order[] = new int[4];
         for (int i = 0; i < 4; i++) {
