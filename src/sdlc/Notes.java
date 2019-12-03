@@ -27,7 +27,6 @@ public class Notes extends javax.swing.JPanel {
         this.topics = topics;
         this.texts = texts;
         //Arrays.stream(texts).forEach(System.out::println);
-        System.out.println(texts[1]);
         generateAndDisplay();
     }
 
@@ -49,7 +48,7 @@ public class Notes extends javax.swing.JPanel {
         }
 
         s += "</html>";
-        System.out.println(s);
+        //System.out.println(s);
         txtNotes.setText(s);
     }
 
@@ -70,13 +69,13 @@ public class Notes extends javax.swing.JPanel {
             @Override
             public void hyperlinkUpdate(final HyperlinkEvent pE) {
                 if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {
-                    System.out.println("JEditorPane link click: url='" + pE.getURL() + "' description='" + pE.getDescription() + "'");
+                    //System.out.println("JEditorPane link click: url='" + pE.getURL() + "' description='" + pE.getDescription() + "'");
                     String reference = pE.getDescription();
                     if (reference != null && reference.startsWith("#")) { // link must start with # to be internal reference
                         reference = reference.substring(1);
                         txtNotes.scrollToReference(reference);
                         //txtNotes.scrollToReference("#" + reference);
-                        System.out.println("scrolled");
+                        //System.out.println("scrolled");
                     }
                 }
             }
@@ -92,19 +91,21 @@ public class Notes extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notesLbl))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(notesLbl)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(notesLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -17,22 +17,25 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" min="-2" pref="448" max="-2" attributes="0"/>
-                  <Component id="notesLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="480" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="notesLbl" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="notesLbl" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane2" min="-2" pref="441" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" pref="454" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -56,7 +59,7 @@
       <SubComponents>
         <Component class="javax.swing.JEditorPane" name="txtNotes">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtNotes.setEditable(false);&#xa;txtNotes.addHyperlinkListener(new HyperlinkListener() {&#xa;            @Override&#xa;public void hyperlinkUpdate(final HyperlinkEvent pE) {&#xa;                if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {&#xa;                    System.out.println(&quot;JEditorPane link click: url=&apos;&quot; + pE.getURL() + &quot;&apos; description=&apos;&quot; + pE.getDescription() + &quot;&apos;&quot;);&#xa;                    String reference = pE.getDescription();&#xa;                    if (reference != null &amp;&amp; reference.startsWith(&quot;#&quot;)) { // link must start with # to be internal reference&#xa;                        reference = reference.substring(1);&#xa;                        txtNotes.scrollToReference(reference);&#xa;                        //txtNotes.scrollToReference(&quot;#&quot; + reference);&#xa;                        System.out.println(&quot;scrolled&quot;);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });&#xa;"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="txtNotes.setEditable(false);&#xa;txtNotes.addHyperlinkListener(new HyperlinkListener() {&#xa;            @Override&#xa;        public void hyperlinkUpdate(final HyperlinkEvent pE) {&#xa;                if (HyperlinkEvent.EventType.ACTIVATED == pE.getEventType()) {&#xa;                    //System.out.println(&quot;JEditorPane link click: url=&apos;&quot; + pE.getURL() + &quot;&apos; description=&apos;&quot; + pE.getDescription() + &quot;&apos;&quot;);&#xa;                    String reference = pE.getDescription();&#xa;                    if (reference != null &amp;&amp; reference.startsWith(&quot;#&quot;)) { // link must start with # to be internal reference&#xa;                        reference = reference.substring(1);&#xa;                        txtNotes.scrollToReference(reference);&#xa;                        //txtNotes.scrollToReference(&quot;#&quot; + reference);&#xa;                        //System.out.println(&quot;scrolled&quot;);&#xa;                    }&#xa;                }&#xa;            }&#xa;        });&#xa;"/>
           </AuxValues>
         </Component>
       </SubComponents>
