@@ -79,6 +79,7 @@ public class Results extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         SDLC.setMainContentPane(new Welcome());
+        SDLC.setResizable(false);
     }//GEN-LAST:event_btnBackActionPerformed
 
     // prevents the textbox from being edited

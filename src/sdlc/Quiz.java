@@ -137,6 +137,7 @@ public class Quiz extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Are you sure you want to go back? You progress will not be saved.", "Warning", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             SDLC.setMainContentPane(new Welcome());
+            SDLC.setResizable(false);
             // go back
         }
     }//GEN-LAST:event_btnBackActionPerformed
