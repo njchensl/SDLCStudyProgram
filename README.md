@@ -22,6 +22,7 @@
 * Download the .zip file. This file contains the both the program and the resources
 * Unzip the file
 * Double click on the .jar file. If you have problems opening it, please make sure that Java version 13 or higher is installed and configured on your system.
+(It is highly recommended that you have at least Java version 12 installed on your system as otherwise, you might have problems running the program.)
 
 # User Manual
 
