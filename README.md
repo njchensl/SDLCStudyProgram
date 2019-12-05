@@ -24,6 +24,8 @@
 * Double click on the .jar file. If you have problems opening it, please make sure that Java version 13 or higher is installed and configured on your system.
 (It is highly recommended that you have at least Java version 12 installed on your system as otherwise, you might have problems running the program.)
 
+You can optionally compile the program from source yourself. To compile it, make sure that Apache Ant is installed and configured, cd to the project directory, and execute ant. The .jar file will be found in the /dist folder. Make sure that the question bank and the study notes are in the same directory as the .jar file when you run the program.
+
 # User Manual
 
 ## Startup
